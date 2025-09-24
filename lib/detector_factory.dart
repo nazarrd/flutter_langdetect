@@ -4,7 +4,6 @@ import 'detector.dart';
 import 'lang_detect_exception.dart';
 import 'utils/lang_profile.dart';
 import 'language.dart';
-import 'package:logger/logger.dart';
 import 'utils/profiles/all_language_profiles.dart';
 
 /// Language Detector Factory Class.
@@ -17,7 +16,6 @@ import 'utils/profiles/all_language_profiles.dart';
 /// construct Detector instance via DetectorFactory.create().
 /// See also Detector's sample code.
 class DetectorFactory {
-  final logger = Logger();
   static final DetectorFactory _singleton = DetectorFactory._internal();
   static String profileBasePath =
       "packages/flutter_langdetect/assets/profiles/";
@@ -56,7 +54,6 @@ class DetectorFactory {
   List<String> langList = [];
 
   Future<void> loadProfile() async {
-    logger.d("loadProfile");
     int langSize = allLanguageProfiles.length;
     int index = 0;
     for (final languageProfile in allLanguageProfiles) {

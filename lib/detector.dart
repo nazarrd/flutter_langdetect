@@ -1,11 +1,11 @@
-import 'dart:math';
+import 'dart:math' hide log;
+import 'dart:developer';
 
 import 'utils/ngram.dart';
 import 'utils/unicode_block.dart';
 import 'language.dart';
 import 'lang_detect_exception.dart';
 import 'detector_factory.dart';
-import 'package:logger/logger.dart';
 
 ///   [Detector] class is to detect language from specified text.
 ///
@@ -33,7 +33,6 @@ import 'package:logger/logger.dart';
 /// ```
 ///
 class Detector {
-  final logger = Logger();
   static const double alphaDefault = 0.5;
   static const double alphaWidth = 0.05;
   static const int iterationLimit = 1000;
@@ -245,7 +244,7 @@ class Detector {
 
     List<double> langProbMap = wordLangProbMap[word]!;
     if (verbose) {
-      logger.d('$word($word): ${_wordProbToString(langProbMap)}');
+      log('$word($word): ${_wordProbToString(langProbMap)}');
     }
 
     double weight = alpha / baseFreq;
